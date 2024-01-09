@@ -12,6 +12,6 @@ public class TestClass {
     }
     @GetMapping("all")
     public String getnameall(){
-        return "hej all";
+        return "hej fosjdfkdsjfækjdfkæsdjfsd";
     }
 }
