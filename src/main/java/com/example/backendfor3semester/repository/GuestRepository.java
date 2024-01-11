@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GuestRepository extends JpaRepository<Guest, Integer> {
+
+    Guest findByUsernameAndPassword(String username, String password);
+
 }

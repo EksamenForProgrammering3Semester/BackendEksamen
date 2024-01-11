@@ -19,6 +19,7 @@ public class Room {
     private Integer id;
     private String roomNumber;
     private int numberOfBeds;
+    private int pricePerDay;
     @ManyToOne
     private Hotel hotel;
     @Column(nullable = false)

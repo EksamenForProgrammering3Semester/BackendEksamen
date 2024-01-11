@@ -20,12 +20,15 @@ public class RoomRequest {
     private int numberOfBeds;
 
     private int hotelId;
+    private int pricePerDay;
+
 
     public Room roomBuilder() {
 
         return Room.builder()
                 .roomNumber(roomNumber)
                 .numberOfBeds(numberOfBeds)
+                .pricePerDay(pricePerDay)
                 .created(LocalDateTime.now())
                 .updated(LocalDateTime.now())
                 .build();

@@ -43,6 +43,7 @@ public class HotelController {
         hotelService.deleteHotelById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @CrossOrigin("*")
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Hotel> updateHotel(@PathVariable Integer id, @RequestBody HotelRequest hotelRequest) {
@@ -56,3 +57,5 @@ public class HotelController {
 
 
     }
+
+}
