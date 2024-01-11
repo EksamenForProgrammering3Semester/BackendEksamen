@@ -12,8 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Builder
 public class HotelResponse {
 
-    @Autowired
-    private HotelService hotelService;
+
     private Integer id;
     private String name;
     private String street;
@@ -22,7 +21,12 @@ public class HotelResponse {
     private String country;
     private int numberOfRooms;
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    private HotelService hotelService;
+
     public HotelResponse(Hotel hotel) {
+
         this.id = hotel.getId();
         this.name = hotel.getName();
         this.street = hotel.getStreet();

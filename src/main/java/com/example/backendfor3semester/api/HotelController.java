@@ -1,15 +1,17 @@
 package com.example.backendfor3semester.api;
 
 import com.example.backendfor3semester.dto.HotelRequest;
+import com.example.backendfor3semester.dto.HotelResponse;
 import com.example.backendfor3semester.entity.Hotel;
 import com.example.backendfor3semester.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/hotels")
 public class HotelController {
@@ -26,4 +28,20 @@ public class HotelController {
         Hotel createdHotel = hotelService.createHotel(hotelRequest);
         return ResponseEntity.ok(createdHotel);
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<HotelResponse>> getAllHotels() {
+        List<HotelResponse> hotelResponses = hotelService.getAllHotelResponses();
+        return new ResponseEntity<>(hotelResponses, HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public HotelResponse getHotelById(@PathVariable Integer id) {
+        return hotelService.getHotelResponseById(id);
+    }
+    @CrossOrigin("*")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteHotelById(@PathVariable Integer id) {
+        hotelService.deleteHotelById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
