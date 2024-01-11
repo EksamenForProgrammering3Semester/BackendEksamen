@@ -6,6 +6,8 @@ import com.example.backendfor3semester.entity.Room;
 import com.example.backendfor3semester.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class RoomService {
 
@@ -19,5 +21,8 @@ public class RoomService {
         room.setHotel(hotel);  // Set the hotel manually
 
         return roomRepository.save(room);
+    }
+    public Optional<Room> findRoomById(int roomId) {
+        return roomRepository.findById(roomId);
     }
 }
