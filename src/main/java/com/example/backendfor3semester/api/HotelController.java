@@ -44,4 +44,15 @@ public class HotelController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-}
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Hotel> updateHotel(@PathVariable Integer id, @RequestBody HotelRequest hotelRequest) {
+        Hotel updatedHotel = hotelService.updateHotel(id, hotelRequest);
+
+        if (updatedHotel != null) {
+            return ResponseEntity.ok(updatedHotel);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+
+    }

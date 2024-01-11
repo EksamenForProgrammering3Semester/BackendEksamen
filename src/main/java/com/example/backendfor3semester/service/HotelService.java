@@ -65,8 +65,30 @@ public class HotelService {
             return null;
         }
     }
+    public Hotel getHotelById(Integer id){
+        Hotel hotel = hotelRepository.findById(id).orElse(null);
+
+        return hotel;
+    }
     public void deleteHotelById(Integer id) {
         hotelRepository.deleteById(id);
+    }
+    public Hotel updateHotel(Integer id, HotelRequest hotelRequest) {
+        Hotel existingHotel = hotelRepository.findById(id).orElse(null);
+
+        if (existingHotel != null) {
+            // Update the existing hotel with the new data
+            existingHotel.setName(hotelRequest.getName());
+            existingHotel.setStreet(hotelRequest.getStreet());
+            existingHotel.setCity(hotelRequest.getCity());
+            existingHotel.setZip(hotelRequest.getZip());
+            existingHotel.setCountry(hotelRequest.getCountry());
+
+            // Save and return the updated hotel
+            return hotelRepository.save(existingHotel);
+        }
+
+        return null; // Hotel with the specified id not found
     }
 
 

@@ -2,7 +2,9 @@ package com.example.backendfor3semester.dto;
 
 import com.example.backendfor3semester.entity.Hotel;
 import com.example.backendfor3semester.entity.Room;
+import com.example.backendfor3semester.service.HotelService;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 
@@ -14,18 +16,16 @@ import java.time.LocalDateTime;
 public class RoomRequest {
 
 
-    private Integer id;
     private String roomNumber;
     private int numberOfBeds;
 
-    private Hotel hotel;
+    private int hotelId;
 
+    public Room roomBuilder() {
 
-    public Room roomBuilder(){
         return Room.builder()
                 .roomNumber(roomNumber)
                 .numberOfBeds(numberOfBeds)
-                .hotel(hotel)
                 .created(LocalDateTime.now())
                 .updated(LocalDateTime.now())
                 .build();
