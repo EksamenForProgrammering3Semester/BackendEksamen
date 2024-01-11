@@ -21,6 +21,7 @@ public class Hotel {
     private String city;
     private String zip;
     private String country;
+    private String hotelType;
     @Column(nullable = false)
     private LocalDateTime created;
     @Column(nullable = false)

@@ -47,7 +47,7 @@ public class ReservationController {
         List<Reservation> reservations = reservationService.getAllReservations();
         return ResponseEntity.ok(reservations);
     }
-
+    @CrossOrigin("*")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReservation(@PathVariable int id) {
         try {
