@@ -4,7 +4,10 @@ import com.example.backendfor3semester.dto.RoomRequest;
 import com.example.backendfor3semester.entity.Hotel;
 import com.example.backendfor3semester.entity.Room;
 import com.example.backendfor3semester.repository.RoomRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,4 +32,5 @@ public class RoomService {
     public List<Room> getAllRoomsByHotelId(int hotelId) {
         return roomRepository.findAllByHotelId(hotelId);
     }
+
 }

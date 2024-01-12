@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -35,5 +36,12 @@ public class RoomController {
     @GetMapping("/hotel/{id}")
     public List<Room> getAllRoomsByHotelId(@PathVariable int id) {
         return roomService.getAllRoomsByHotelId(id);
+    }
+    @GetMapping("/{roomId}")
+    public ResponseEntity<Room> getRoomById(@PathVariable int roomId) {
+        Optional<Room> roomOptional = roomService.findRoomById(roomId);
+
+        return roomOptional.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
