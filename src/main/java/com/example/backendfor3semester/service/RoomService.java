@@ -6,6 +6,7 @@ import com.example.backendfor3semester.entity.Room;
 import com.example.backendfor3semester.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,5 +25,8 @@ public class RoomService {
     }
     public Optional<Room> findRoomById(int roomId) {
         return roomRepository.findById(roomId);
+    }
+    public List<Room> getAllRoomsByHotelId(int hotelId) {
+        return roomRepository.findAllByHotelId(hotelId);
     }
 }

@@ -58,4 +58,16 @@ public class HotelController {
 
     }
 
+    @GetMapping("/byType/{hotelType}")
+    public ResponseEntity<List<Hotel>> getHotelsByType(@PathVariable String hotelType) {
+        List<Hotel> hotels = hotelService.findHotelsByType(hotelType);
+
+        if (hotels.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(hotels);
+        }
+    }
+
+
 }

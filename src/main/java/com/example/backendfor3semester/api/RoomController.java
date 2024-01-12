@@ -10,6 +10,8 @@ import com.example.backendfor3semester.service.RoomService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rooms")
@@ -28,5 +30,10 @@ public class RoomController {
         Hotel hotel = hotelService.getHotelById(roomRequest.getHotelId());
         Room room = roomService.createRoom(roomRequest, hotel);
         return ResponseEntity.ok(room);
+    }
+
+    @GetMapping("/hotel/{id}")
+    public List<Room> getAllRoomsByHotelId(@PathVariable int id) {
+        return roomService.getAllRoomsByHotelId(id);
     }
 }

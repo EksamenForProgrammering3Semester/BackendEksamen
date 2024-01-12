@@ -91,6 +91,10 @@ public class HotelService {
         return null; // Hotel with the specified id not found
     }
 
+    public List<Hotel> findHotelsByType(String hotelType) {
+        return hotelRepository.findByHotelType(hotelType);
+    }
+
 
 
 

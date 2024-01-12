@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Configuration
@@ -52,7 +54,9 @@ public class TestData implements CommandLineRunner {
                // roomRepository.save(room);
             }
         }
-       // System.out.println(hotelService.getNumberOfRooms(1));
+        List<Hotel> hotels = hotelService.findHotelsByType("Family House");
+
+        // System.out.println(hotelService.getNumberOfRooms(1));
 
     }
 }
