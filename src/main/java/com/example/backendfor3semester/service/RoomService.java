@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +33,10 @@ public class RoomService {
     }
     public List<Room> getAllRoomsByHotelId(int hotelId) {
         return roomRepository.findAllByHotelId(hotelId);
+    }
+    public List<Room> findAvailableRoomsByDateAndHotel(int hotelId, LocalDate date) {
+        LocalDateTime startOfDay = date.atStartOfDay();
+        return roomRepository.findAvailableRoomsByDateAndHotel(hotelId, startOfDay);
     }
 
 }

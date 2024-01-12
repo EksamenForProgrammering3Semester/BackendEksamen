@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +57,8 @@ public class TestData implements CommandLineRunner {
         }
         List<Hotel> hotels = hotelService.findHotelsByType("Family House");
 
-        // System.out.println(hotelService.getNumberOfRooms(1));
 
+        List<Room> rooms = roomRepository.findAvailableRoomsByDateAndHotel(1, LocalDate.parse("2024-01-15").atStartOfDay());
+        System.out.println(rooms);
     }
 }

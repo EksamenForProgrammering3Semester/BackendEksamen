@@ -10,6 +10,7 @@ import com.example.backendfor3semester.service.RoomService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,5 +44,12 @@ public class RoomController {
 
         return roomOptional.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/available/{hotelId}/{date}")
+    public List<Room> getAvailableRooms(@PathVariable int hotelId, @PathVariable String date) {
+        LocalDate parsedDate = LocalDate.parse(date);
+        return roomService.findAvailableRoomsByDateAndHotel(hotelId, parsedDate);
     }
 }
